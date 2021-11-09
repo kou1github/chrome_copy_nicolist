@@ -7,7 +7,7 @@ var results = document.getElementById("results");
 var array = [];
 
 //★ブラウザのタブを取得
-chrome.tabs.query({active: true, lastFocusedWindow: true }, function (tabs) {
+chrome.tabs.query({ active: true, lastFocusedWindow: true }, function (tabs) {
 
     //取得したタブ数分を繰り返し
     for (var i = 0; i < tabs.length; i++) {
@@ -15,7 +15,17 @@ chrome.tabs.query({active: true, lastFocusedWindow: true }, function (tabs) {
         array.push(output);
     }
 
+    // ToDo: クリップボードにURLを格納する
     results.value = array.join("\n"); //arrayの要素を改行で区切ってresultsに表示
+    copyToclipboard(results.value);
     results.select(); //resultsを選択状態に
 
 });
+
+/**
+ *
+ * @param string str
+ */
+function copyToclipboard(str) {
+    navigator.clipboard.writeText(str);
+}
