@@ -1,20 +1,27 @@
 {
-  "name": "Hello world",
-  "version": "1.0.1",
+  "name": "Nico,youtube URL Copier",
+  "version": "1.0",
   "manifest_version": 3,
-  "description": "Sample Chrome Extension",
-  "author": "kou1niko",
-  "icons": {
-    "16": "image/icon_16.png",
-    "48": "image/icon_48.png",
-    "128": "image/icon_128.png"
+  "description": "ニコニコ動画、もしくはYoutubeのURLをコピーします。VirutalCastやVRChatでURLを容易に連携するための物です。",
+  "background": {
+    "service_worker": "service-worker.js"
   },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*",
+        "https://www.nicovideo.jp/*"
+      ],
+      "js": [
+        "content-script.js"
+      ]
+    }
+  ],
   "action": {
-    "default_icon": "image/icon_128.png",
-    "default_popup": "hello.html"
+    "default_icon": "image/icon_128.png"
   },
   "permissions": [
-    "tabs",
-    "contextMenus"
+    "clipboardWrite",
+    "activeTab"
   ]
 }
