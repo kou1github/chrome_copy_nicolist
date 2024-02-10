@@ -17,11 +17,12 @@ chrome.tabs.query({ active: true, lastFocusedWindow: true }, function (tabs) {
 
     // ToDo: クリップボードにURLを格納する
     results.value = array.join("\n"); //arrayの要素を改行で区切ってresultsに表示
-    results.select(); //resultsを選択状態に
-    if(!results.selected) {
-        results.select(); //resultsを選択状態に
-    }
-    copyToclipboard(results.value);
+    // results.select(); //resultsを選択状態に
+    // if(!results.selected) {
+    //     results.select(); //resultsを選択状態に
+    // }
+    // copyToclipboard(results.value);
+    copyToclipboard(tabs[0].url);
 
 });
 
